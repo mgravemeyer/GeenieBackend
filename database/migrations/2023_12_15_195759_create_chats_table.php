@@ -11,9 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('chats', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('support_user_id');
-            $table->unsignedBigInteger('customer_user_id');
+            $table->uuid('id')->primary();
+            $table->uuid('support_user_id');
+            $table->uuid('customer_user_id');
             $table->foreign('support_user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('customer_user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
